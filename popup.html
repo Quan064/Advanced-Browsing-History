@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Advanced Browsing History</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      width: 100%; /* Đảm bảo toàn bộ trang chiếm đủ chiều rộng */
+      width: 355px;
+      color: #0bb4c7;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      flex: 1;
+      padding: 5px;
+      border: 1px solid #4fb6cd;
+      border-radius: 3px;
+      box-sizing: border-box; /* Tránh bị tràn do padding */
+      color: gray;
+    }
+    .searchInput:focus {
+      outline: none; /* Loại bỏ viền mặc định */
+      border: 1px solid #4fb6cd; /* Thay đổi màu viền */
+      box-shadow: 0 0 5px #4fb6cd; /* Thêm hiệu ứng phát sáng */
+    }
+    #websiteInput:focus {
+      outline: none; /* Loại bỏ viền mặc định */
+      border: 1px solid #4fb6cd; /* Thay đổi màu viền */
+      box-shadow: 0 0 5px #4fb6cd; /* Thêm hiệu ứng phát sáng */
+    }
+    button {
+      width: 50%; /* Chia đôi chiều rộng */
+      padding: 8px 10px;
+      font-size: 14px;
+      border: none;
+      background-color: #4fb6cd;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #3b8899;
+    }
+    .result {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .result-item {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+    }
+    .result-item a {
+      color: gray;
+      text-decoration: none;
+      padding-right: 4px;
+      height: 19px;
+    }
+    .result-item a:hover {
+      text-decoration: underline;
+      color: #4fb6cd;
+      height: 19px;
+    }
+    .history-item {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .history-text {
+      flex-grow: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+    }
+    .favicon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      flex-shrink: 0; /* Ngăn favicon bị co lại */
+    }
+    .title {
+      font-size: 14px;
+      color: #000;
+      text-decoration: none;
+      white-space: nowrap; /* Ngăn tiêu đề bị xuống dòng */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .time {
+      font-size: 12px;
+      color: gray;
+      white-space: nowrap;
+    }
+    .title-icon {
+      width: 24px;  /* Điều chỉnh kích thước icon */
+      height: 24px;
+      margin-right: 4px; /* Khoảng cách với chữ */
+      vertical-align: middle;
+    }
+    .date-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0bb4c7;
+      margin-top: 10px;
+      padding: 5px 0px;
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+    .loader {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ccc;
+      border-top-color: #4fb6cd;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px; /* Tạo khoảng cách giữa icon và chữ */
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #loading {
+      font-size: 16px;
+      color: #4fb6cd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      justify-content: flex-start; /* Dịch về bên trái */
+    }
+    .input-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 8px 8px 8px 36px; /* Chừa khoảng trống bên trái cho icon */
+      border: 1px solid #4fb6cd;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-size: 14px; /* Đảm bảo kích thước chữ vừa phải */
+      height: 36px; /* Đồng nhất chiều cao input */
+    }
+
+    .input-container .input-icon {
+      position: absolute;
+      left: 10px; /* Điều chỉnh khoảng cách icon */
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px; /* Kích thước icon */
+      color: #4fb6cd;
+      pointer-events: none; /* Tránh bị click vào icon */
+      width: 20px; /* Đảm bảo không bị méo */
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-style: normal;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+    #checkbox {
+      height: 18px;
+      width: 18px;
+      margin: 8px 11px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>
+    <img src="icons/icon-128.png" alt="Icon" class="title-icon"> Advanced Browsing History
+  </h1>
+
+  <div class="input-container">
+    <i class="fa-regular fa-bookmark input-icon"></i>
+    <input type="text" class="searchInput" id="searchInput" placeholder='Content' font-size=12px>
+  </div>
+  <div class="input-container">
+    <i class="fa-solid fa-link input-icon"></i>
+    <input type="text" class="searchInput" id="WebInput" placeholder='Website' font-size=12px style="margin-top: 5px;">
+  </div>
+  <div class="input-container">
+    <i class="fa-regular fa-calendar input-icon"></i>
+    <input type="text" list="inputOptions" class="searchInput" id="TimeInput" placeholder='Time' font-size=12px style="margin-top: 5px;">
+    <datalist id="inputOptions">
+      <option value="Current hour">
+      <option value="Current day">
+      <option value="Current week">
+      <option value="Current month">
+      <option value="Current year">
+    </datalist>
+  </div>
+
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox" checked>
+    <div style="font-size: 15px;color: gray;">Each link appears only once</div>
+  </div>
+
+  <div class="search-container">
+    <button id="searchButton">Search</button>
+    <button id="clear-history">Clear history</button>
+  </div>
+
+  <a href="https://forms.gle/cnUALkSW8GDXYg617" target="_blank" style="color: #4fb6cd;margin-top: 4px;display: block;">
+    Give Feedback
+  </a>
+
+  <div id="results" class="result"></div>
+
+  <script src="popup.js"></script>
+
+</body>
+</html>
