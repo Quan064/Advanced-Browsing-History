@@ -1,5 +1,5 @@
 ﻿# Advanced-Browsing-History
-[![Visit extension]([https://img.youtube.com/vi/GsxwOXEXcoI/hqdefault.jpg)](https://youtu.be/GsxwOXEXcoI](https://microsoftedge.microsoft.com/addons/detail/advanced-browsing-history/hngcimgcooapkaiajgjljkhpegehbenp))
+[![Visit extension]](https://microsoftedge.microsoft.com/addons/detail/advanced-browsing-history/hngcimgcooapkaiajgjljkhpegehbenp)
 
 ## Advanced Browsing History - Search Browsing History by Page Content!
 🔍 Have you ever forgotten an important website that you read a few days ago? Your browser's history can only help you find it by the page title? Advanced Browsing History is the solution!
