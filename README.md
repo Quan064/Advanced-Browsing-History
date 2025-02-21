@@ -7,9 +7,9 @@ Have you ever forgotten an important website that you read a few days ago? Your 
 💡 Advanced Browsing History helps you find your browsing history based on the website content, not just the URL or title. If you remember a piece of text, or a specific piece of information, Advanced Browsing History will quickly find that website for you!
 
 ## 🔥 Outstanding features
-✅ Powerful search by page content: No need to remember the title or URL, just enter a part of the content you remember!
-✅ Smart browsing history storage: Automatically save website content when you visit without any additional steps.
-✅ Security & privacy: Data is stored locally, no personal information is collected.
+- ✅ Powerful search by page content: No need to remember the title or URL, just enter a part of the content you remember!
+- ✅ Smart browsing history storage: Automatically save website content when you visit without any additional steps.
+- ✅ Security & privacy: Data is stored locally, no personal information is collected.
 
 ## 🛠 Instructions
 ‼ This extension cannot find accesses that were made before this extension was installed.
