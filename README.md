@@ -1,5 +1,5 @@
 ﻿# Advanced-Browsing-History
-https://microsoftedge.microsoft.com/addons/detail/advanced-browsing-history/hngcimgcooapkaiajgjljkhpegehbenp
+[![Visit extension]([https://img.youtube.com/vi/GsxwOXEXcoI/hqdefault.jpg)](https://youtu.be/GsxwOXEXcoI](https://microsoftedge.microsoft.com/addons/detail/advanced-browsing-history/hngcimgcooapkaiajgjljkhpegehbenp))
 
 ## Advanced Browsing History - Search Browsing History by Page Content!
 🔍 Have you ever forgotten an important website that you read a few days ago? Your browser's history can only help you find it by the page title? Advanced Browsing History is the solution!
@@ -13,14 +13,14 @@ https://microsoftedge.microsoft.com/addons/detail/advanced-browsing-history/hngc
 
 ## 🛠 Instructions
 > [!WARNING]
-> ‼ This extension cannot find accesses that were made before this extension was installed.
+> ❗❗ This extension cannot find accesses that were made before this extension was installed.
 - Search history by Content, Website and Time
 - 💡 You can move between input bars with the ⬆⬇ key and press the search button by pressing the Enter key.
 - ❗ Note: Time is in the format d00-m00-y0000 h00:m00
 - ❗ Note: You can also leave it blank if you don't remember.
 - ❗ Note: Use the + sign to find words in different places on the website and the - sign to remove unwanted words.
-Example:
 ```
+Example:
 • Content: exam1 exam2 + exam3 - exam4 exam5 + exam6
 • Website: - facebook.com/mess
 • Time: d12
